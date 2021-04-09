@@ -1,0 +1,17 @@
+commit -> Mutiation
+
+action -> commit -> state
+
+
+const a = { aa: 1, bb: 2}
+const xx = {a, cc: 444}
+{aa: 1, bb: 2}, cc: 444
+
+const xx = {...a, cc: 444}
+{aa: 1, bb: 2, cc: 444}
+
+
+const xx = {...a, cc: 444} => {aa:1, bb:2, cc:444}
+const bb = {...a} => 2
+const { bb, ...xxx } = a => 
+
