@@ -1,6 +1,5 @@
 <template>
-  
-  <table class="table" style="width: 100%; text-align:justify">
+  <table class="table" style="width: 100%; text-align: justify">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -10,22 +9,22 @@
       </tr>
     </thead>
     <tbody>
-       <TodoItem v-for="item in items" :key="item" v-bind="item" />
+      <TodoItem v-for="item in items" :key="item" v-bind="item" />
     </tbody>
-</table>
+  </table>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { useStore } from '@/store'
-import TodoItem from './TodoItem.vue'
+import { computed, defineComponent } from "vue";
+import { useStore } from "@/store";
+import TodoItem from "./TodoItem.vue";
 
 export default defineComponent({
   components: { TodoItem },
   setup() {
-    const store = useStore()
-    const items = computed(() => store.state.items)
-    return { items }
-  }
-})
+    const store = useStore();
+    const items = computed(() => store.state.items);
+    return { items };
+  },
+});
 </script>

@@ -11,7 +11,8 @@
       <p class="text-center mt-2">
         {{ completedCount }} of {{ totalCount }} completed.
       </p>
-      <NewItem />
+      <NewItem v-if="!item" />
+      <EditItem v-else />
       <TodoList />
     </div>
   </div>
@@ -21,21 +22,25 @@
 import { computed, defineComponent, onMounted } from 'vue'
 
 import NewItem from './components/NewItem.vue'
+import EditItem from './components/EditItem.vue'
 import TodoList from './components/TodoList.vue'
 import { useStore } from './store'
 import { ActionTypes } from './store/actions'
 
 export default defineComponent({
-  components: { TodoList, NewItem },
+  components: { TodoList, NewItem, EditItem },
   setup() {
     const store = useStore()
+
+    // If has item data, it's mean edit case, else add case
+    const item = computed(() => store.state.item)
 
     const loading = computed(() => store.state.loading)
     onMounted(() => store.dispatch(ActionTypes.GetTodoItems))
 
     const completedCount = computed(() => store.getters.completedCount)
     const totalCount = computed(() => store.getters.totalCount)
-    return { loading, completedCount, totalCount }
+    return { loading, completedCount, totalCount, item }
   }
 })
 </script>

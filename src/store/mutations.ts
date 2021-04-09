@@ -13,7 +13,7 @@ export enum MutationType {
 export type Mutations = {
   [MutationType.CreateItem](state: State, item: TodoItem): void
   [MutationType.SetItems](state: State, items: TodoItem[]): void
-  [MutationType.SetItem](state: State, item: TodoItem): void
+  [MutationType.SetItem](state: State, item: TodoItem | null): void
   [MutationType.CompleteItem](
     state: State,
     item: Partial<TodoItem> & { id: number }
@@ -39,28 +39,29 @@ export const mutations: MutationTree<State> & Mutations = {
   },
   [MutationType.CompleteItem](state, newItem) {
     const item = state.items.findIndex(s => s.id === newItem.id)
-    
+
     if (item === -1) return
     state.items.splice(newItem.id, 1);
     // state.items[item] = { ...state.items[item], ...newItem }
-    // dung ham array map 
+    // dung ham array map
     // const array1 = [1, 4, 9, 16];
     // pass a function to map
     // const map1 = array1.map(x => x * 2);
 
     // console.log(map1);
     // expected output: Array [2, 8, 18, 32]
-    
+
   },
   [MutationType.EditItem](state, newItem) {
-    const item = state.items.findIndex(s => s.id === newItem.id)
-    console.log(newItem); 
-    if (item === -1) return
-    
-    // state.items[item] = { ...state.items[item], ...newItem }
-    
+    const itemIndex = state.items.findIndex(s => s.id === newItem.id)
+    console.log(newItem, 'edit item');
+    if (itemIndex === -1) return
+
+    state.items[itemIndex] = {
+      ...state.items[itemIndex], ...newItem,
+    }
   },
   [MutationType.SetLoading](state, value) {
     state.loading = value
-  }
+  },
 }

@@ -15,5 +15,5 @@ export type State = {
 export const state: State = {
   loading: false,
   items: [],
-  item: null
+  item: null,
 }

@@ -25,39 +25,38 @@
       </div>
     </div>
   </form>
-
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from "vue";
 
-import { useStore } from '@/store'
-import { TodoItem } from '@/store/state'
-import { MutationType } from '@/store/mutations'
+import { useStore } from "@/store";
+import { TodoItem } from "@/store/state";
+import { MutationType } from "@/store/mutations";
 
 export default defineComponent({
   setup() {
-    const name = ref('')
-    const description = ref('')
-    const store = useStore()
-    
+    const name = ref("");
+    const description = ref("");
+    const store = useStore();
+
     const createTask = () => {
-      if (name.value === '') return
-      if (description.value === '') return
+      if (name.value === "") return;
+      if (description.value === "") return;
 
       const item: TodoItem = {
         id: Date.now(),
         name: name.value,
         description: description.value,
         price: 100,
-        completed: false
-      }
-      store.commit(MutationType.CreateItem, item)
-      name.value = '' 
-      description.value = '' 
-    }
-    
-    return { createTask, name, description }
-  }
-})
+        completed: false,
+      };
+      store.commit(MutationType.CreateItem, item);
+      name.value = "";
+      description.value = "";
+    };
+
+    return { createTask, name, description };
+  },
+});
 </script>
