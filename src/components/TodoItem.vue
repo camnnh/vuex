@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { defineComponent } from "vue";
 import { useStore } from "@/store";
 import { MutationType } from "@/store/mutations";
 
@@ -58,7 +58,8 @@ export default defineComponent({
         description: props.description,
       });
     };
-    const completedCount = computed(() => store.getters.completedCount);
+
+    // const completedCount = computed(() => store.getters.completedCount);
     return { greet, setedit, edit };
   },
 });
