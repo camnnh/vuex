@@ -12,5 +12,5 @@ export const getters: GetterTree<State, State> & Getters = {
   },
   totalCount(state) {
     return state.items.length
-  }
+  },
 }

@@ -19,28 +19,28 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted } from 'vue'
+import { computed, defineComponent, onMounted } from "vue";
 
-import NewItem from './components/NewItem.vue'
-import EditItem from './components/EditItem.vue'
-import TodoList from './components/TodoList.vue'
-import { useStore } from './store'
-import { ActionTypes } from './store/actions'
+import NewItem from "./components/NewItem.vue";
+import EditItem from "./components/EditItem.vue";
+import TodoList from "./components/TodoList.vue";
+import { useStore } from "./store";
+import { ActionTypes } from "./store/actions";
 
 export default defineComponent({
   components: { TodoList, NewItem, EditItem },
   setup() {
-    const store = useStore()
+    const store = useStore();
 
     // If has item data, it's mean edit case, else add case
-    const item = computed(() => store.state.item)
+    const item = computed(() => store.state.item);
 
-    const loading = computed(() => store.state.loading)
-    onMounted(() => store.dispatch(ActionTypes.GetTodoItems))
+    const loading = computed(() => store.state.loading);
+    onMounted(() => store.dispatch(ActionTypes.GetTodoItems));
 
-    const completedCount = computed(() => store.getters.completedCount)
-    const totalCount = computed(() => store.getters.totalCount)
-    return { loading, completedCount, totalCount, item }
-  }
-})
+    const completedCount = computed(() => store.getters.completedCount);
+    const totalCount = computed(() => store.getters.totalCount);
+    return { loading, completedCount, totalCount, item };
+  },
+});
 </script>

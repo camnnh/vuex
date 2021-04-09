@@ -3,7 +3,7 @@ import {
   Store as VuexStore,
   CommitOptions,
   DispatchOptions,
-  createLogger
+  createLogger,
 } from 'vuex'
 
 import { State, state } from './state'
@@ -16,10 +16,10 @@ export const store = createStore<State>({
   state,
   mutations,
   actions,
-  getters
+  getters,
 })
 
-export function useStore() {
+export function useStore(): Store {
   return store as Store
 }
 

@@ -29,16 +29,16 @@ export const actions: ActionTree<State, State> & Actions = {
     commit(MutationType.SetItems, [
       {
         id: 1, name: 'Angular', description: 'Superheroic JavaScript MVW Framework.', price: 100,
-        completed: true
+        completed: true,
       },
       {
         id: 2, name: 'Ember', description: 'A framework for creating ambitious web applications.', price: 100,
-        completed: false
+        completed: false,
       },
       {
         id: 3, name: 'React', description: 'A JavaScript Library for building user interfaces.', price: 100,
-        completed: false
-      }
+        completed: false,
+      },
     ])
-  }
+  },
 }
